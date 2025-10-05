@@ -9,14 +9,10 @@ uid_key = "App_LastUserID_h2841727341"
 
 def get_reg_path() -> str:
     try:
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, reg_path_cn):
-            return reg_path_cn
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, reg_path_oversea):
+            return reg_path_oversea
     except FileNotFoundError:
-        try:
-            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, reg_path_oversea):
-                return reg_path_oversea
-        except FileNotFoundError:
-            return None
+        return None
 
 
 reg_path = get_reg_path()
